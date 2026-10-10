@@ -8,6 +8,7 @@ const FICHIERS = [
 ];
 
 self.addEventListener('install', function(e) {
+  console.log('SW install');
   e.waitUntil(
     caches.open(CACHE).then(function(cache) {
       return cache.addAll(FICHIERS);
@@ -17,6 +18,7 @@ self.addEventListener('install', function(e) {
 });
 
 self.addEventListener('activate', function(e) {
+  console.log('SW activate');
   e.waitUntil(
     caches.keys().then(function(keys) {
       return Promise.all(
